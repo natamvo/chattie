@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "Chattie"
+version = "1.0.0"
+description = ""
+license = "MIT"
+authors = ["Natam Oliveira <natamvo@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+tornado = "ˆ6.2"
+
+[tool.poetry.dev-dependencies]

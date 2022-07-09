@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  db:
+    image: postgres:9.6.2
+    volumes:
+      - ./.data/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres
+
+  chattie:
+    container_name: chattie
+    build: .
+    restart: always
+    volumes:
+      - "./:/usr/src/app/:rw"
+    ports:
+      - "8080:8080"
+    environment:
+      ENV_ALIAS: 'develop'
+      DB_NAME: chattie
+      DB_USER: postgres
+      DB_PASS: 1234
+      DB_HOST: db
+      DB_DRIVER: pdo_pgsql
+      DB_PORT: 5432
+      DEBUG: 'true'
+      PYTHONUNBUFFERED: 1
+
